@@ -1,5 +1,15 @@
 ﻿namespace MonkeyFinder.ViewModel;
-
-public class BaseViewModel
+public partial class BaseViewModel : ObservableObject
 {
+
+    public BaseViewModel()
+    {
+        Title = "Monkey Finder";
+    }
+    [ObservableProperty]
+    bool isLoading;
+    [ObservableProperty]
+    string title;
+
+
 }
