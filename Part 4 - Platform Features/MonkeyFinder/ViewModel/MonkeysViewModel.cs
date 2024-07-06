@@ -6,9 +6,9 @@ public partial class MonkeysViewModel : BaseViewModel
 {
     public ObservableCollection<Monkey> Monkeys { get; } = new();
 
-    IConnectivity connectivity;
-    IGeolocation geolocation;
-    MonkeyService monkeyService;
+    readonly IConnectivity connectivity;
+    readonly IGeolocation geolocation;
+    readonly MonkeyService monkeyService;
     public MonkeysViewModel(MonkeyService monkeyService, IConnectivity connectivity, IGeolocation geolocation)
     {
         Title = "Monkey Finder";
