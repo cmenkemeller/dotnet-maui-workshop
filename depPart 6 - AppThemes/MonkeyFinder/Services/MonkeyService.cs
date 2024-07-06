@@ -4,7 +4,7 @@ namespace MonkeyFinder.Services;
 
 public class MonkeyService
 {
-    readonly HttpClient httpClient;
+    HttpClient httpClient;
     public MonkeyService()
     {
         this.httpClient = new HttpClient();
