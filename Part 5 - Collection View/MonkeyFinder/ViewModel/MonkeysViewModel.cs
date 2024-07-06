@@ -4,7 +4,7 @@ namespace MonkeyFinder.ViewModel;
 
 public partial class MonkeysViewModel : BaseViewModel
 {
-    public ObservableCollection<Monkey> Monkeys { get; } = new();
+    public ObservableCollection<Monkey> Monkeys { get; } = [];
 
     readonly IConnectivity connectivity;
     readonly IGeolocation geolocation;
@@ -16,6 +16,15 @@ public partial class MonkeysViewModel : BaseViewModel
         this.connectivity = connectivity;
         this.geolocation = geolocation;
     }
+
+
+    public async Task InitializeAsync()
+    {
+        await GetMonkeysAsync();
+    }
+
+    [ObservableProperty]
+    bool isRefreshing;
 
     [RelayCommand]
     async Task GoToDetails(Monkey monkey)
@@ -81,6 +90,7 @@ public partial class MonkeysViewModel : BaseViewModel
         finally
         {
             IsBusy = false;
+            IsRefreshing = false;
         }
 
     }
